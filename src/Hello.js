@@ -6,21 +6,22 @@ class Hello extends React.Component {
     super(props)
 
     this.state = {
-      selectedBreed: 'breeds'
+      selectedBreed: 'breeds',
     }
   }
 
+  
+
   componentDidMount() {
-    console.log(fetchDogBreeds())
+    console.log(fetchDogBreeds(this.state.selectedBreed))
   }
 
   render() {
-   
-
-    return  <div>
-  
-       
-    </div> 
+   return(
+        <React.Fragment>
+           <h1>Dogs</h1>
+        </React.Fragment>
+   )
   }
 }
 
