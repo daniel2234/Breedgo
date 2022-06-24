@@ -1,6 +1,6 @@
 import Dog from '../models/Dog';
 
-export function fetchDogBreeds(type = "breeds") {
+export function fetchDogBreeds(type) {
   //type will be a fill for this api method
   return fetch(`https://dog.ceo/api/${type}/list/all`)
   .then(response => response.json())
@@ -20,7 +20,6 @@ export function fetchRandomDogImages(type='affenpinscher') {
   return fetch(`https://dog.ceo/api/breed/${type}/images`)
     .then(response => response.json())
     .then(data => {
-      console.log(data.message, 'here it is called, data.')
       return data.message
   });
 }

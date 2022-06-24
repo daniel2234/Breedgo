@@ -1,13 +1,24 @@
 import React from "react";
+import { fetchRandomDogImages } from "../utils/api";
+// import './FetchImage.css'
 
 class FetchImage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      image : ''
+    }
+  }
+
+
 
 
   render() {
+
     return(
       <div className="image-card">
-          {/* utilize this.props.dogImage here  */}
-          <img src={this.props.randomImage} alt="Avatar"></img>
+          <img src={this.props.randomImage} alt="Dog"></img>
       </div>
     )
   }
