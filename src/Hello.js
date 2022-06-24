@@ -10,7 +10,16 @@ class Hello extends React.Component {
 
     this.state = {
       selectedBreed: 'breeds',
+      image: null,
+      error: null,
     }
+
+    this.handleRequestAPI = this.handleRequestAPI.bind(this);
+  }
+
+  handleRequestAPI() {
+    console.log("this is called here");
+    console.log( fetchRandomDogImages('affenpinscher'));
   }
 
   
@@ -25,7 +34,7 @@ class Hello extends React.Component {
         <React.Fragment>
            <h1>Dogs</h1>
           <FetchImage/>
-          <FetchingButton/>
+          <FetchingButton onClickHandler={this.handleRequestAPI}/>
         </React.Fragment>
    )
   }

@@ -1,26 +1,26 @@
 import Dog from '../models/Dog';
 
-// export function fetchDogBreeds(type = "breeds") {
-//   //type will be a fill for this api method
-//   return fetch(`https://dog.ceo/api/${type}/list/all`)
-//   .then(response => response.json())
-//   .then(data => {
-//     // dogs = Object.keys(data.message)
-//     // subBreeds = Object.values(data.message)
-//     // return makeDogObjects(dogs, subBreeds)
+export function fetchDogBreeds(type = "breeds") {
+  //type will be a fill for this api method
+  return fetch(`https://dog.ceo/api/${type}/list/all`)
+  .then(response => response.json())
+  .then(data => {
+    // dogs = Object.keys(data.message)
+    // subBreeds = Object.values(data.message)
+    // return makeDogObjects(dogs, subBreeds)
 
-//     //original object data.message
-//     console.log(data.message)
-//     return data.message
-//   });
-// }
+    //original object data.message
+    console.log(data.message)
+    return data.message
+  });
+}
 
 
 export function fetchRandomDogImages(type='affenpinscher') {
   return fetch(`https://dog.ceo/api/breed/${type}/images`)
     .then(response => response.json())
     .then(data => {
-      console.log(data.message, 'here it is called.')
+      console.log(data.message, 'here it is called, data.')
   });
 }
 
@@ -61,10 +61,10 @@ function randomPhoto(min, max) {
 //photos are in order, created a random Int function for grab random photos
 //the max value in the randomInt function will adapt for each image api call.
 
-fetch(`https://dog.ceo/api/breed/affenpinscher/images`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data.message, 'here it is called')
-      let randomImage = randomPhoto(0, data.message.length);
-      console.log(randomImage);
- });
+// fetch(`https://dog.ceo/api/breed/affenpinscher/images`)
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(data.message, 'here it is called')
+//       let randomImage = randomPhoto(0, data.message.length);
+//       console.log(randomImage);
+//  });
