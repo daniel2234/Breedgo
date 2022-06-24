@@ -21,6 +21,7 @@ export function fetchRandomDogImages(type='affenpinscher') {
     .then(response => response.json())
     .then(data => {
       console.log(data.message, 'here it is called, data.')
+      return data.message
   });
 }
 

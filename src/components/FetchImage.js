@@ -7,7 +7,7 @@ class FetchImage extends React.Component {
     return(
       <div className="image-card">
           {/* utilize this.props.dogImage here  */}
-          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar"></img>
+          <img src={this.props.randomImage} alt="Avatar"></img>
       </div>
     )
   }

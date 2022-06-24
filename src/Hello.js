@@ -9,20 +9,27 @@ class Hello extends React.Component {
     super(props)
 
     this.state = {
-      selectedBreed: 'breeds',
-      image: null,
-      error: null,
+      // selectedBreed: 'breeds',
+      images: 0,
+      // error: null,
     }
 
     this.handleRequestAPI = this.handleRequestAPI.bind(this);
   }
 
-  handleRequestAPI() {
-    console.log("this is called here");
-    console.log( fetchRandomDogImages('affenpinscher'));
+  randomPhoto = (min, max) => {
+    console.log( Math.floor(Math.random() * (max - min + 1)) + min);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  
+
+  handleRequestAPI() {
+    console.log("this is called here");
+    fetchRandomDogImages('hound')
+    .then((images) => this.setState({
+        images
+    }))
+  }
 
   componentDidMount() {
     // console.log(fetchDogBreeds(this.state.selectedBreed))
@@ -30,10 +37,12 @@ class Hello extends React.Component {
   }
 
   render() {
+    const randomImageIndex = this.randomPhoto(0, this.state.images.length )
+    const randomImage = this.state.images[randomImageIndex];
    return(
         <React.Fragment>
            <h1>Dogs</h1>
-          <FetchImage/>
+          <FetchImage randomImage = {randomImage}/>
           <FetchingButton onClickHandler={this.handleRequestAPI}/>
         </React.Fragment>
    )
