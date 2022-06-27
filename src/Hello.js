@@ -1,6 +1,6 @@
 import React from "react"
-import { fetchDogBreeds } from './utils/api';
-import {fetchRandomDogImages} from './utils/api';
+// import { fetchDogBreeds } from './utils/api';
+// import {fetchRandomDogImages} from './utils/api';
 import FetchingButton from "./FetchingButton";
 import FetchImage from "./components/FetchImage";
 
@@ -9,57 +9,48 @@ class Hello extends React.Component {
     super(props)
 
     this.state = {
-      breeds: 'breeds',
-      images: '',
-      // error: null,
+      breeds: [],
     }
 
-    this.handleRequestAPI = this.handleRequestAPI.bind(this);
+    // this.handleRequestAPI = this.handleRequestAPI.bind(this);
   }
 
-  randomIndex = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  showRandomBreed(breeds) {
+    let randomElement = Object.keys(breeds)[Math.floor(Math.random()* Object.keys(breeds).length)]
+    return randomElement;
   }
 
- breedNames = (breeds) => {
-    let names = []
-    for (let index = 0; index < breeds.length; index++) {
-      const element = breeds[index];
-      names.push(element)
-    }
-    return names
-  }
 
-  handleRequestAPI() {
-    console.log("this is called here");
-    fetchRandomDogImages('affenpinscher')
-    .then((images) => this.setState({
-        images
-    }))
-  }
-
+ fetchRandomDogImages(type='affenpinscher') {
+  return fetch(`https://dog.ceo/api/breed/${type}/images`)
+    .then(response => response.json())
+    .then(data => {
+      return data.message
+  });
+}
   componentDidMount() {
-    fetchDogBreeds(this.state.breeds)
-    .then((breeds) => this.setState({
-      breeds: breeds
-     }))
-    // console.log(fetchDogBreeds(this.state.breeds))
-    // console.log( fetchRandomDogImages('affenpinscher'))
+    fetch(`https://dog.ceo/api/breeds/list/all`)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          breeds: data.message
+        })
+      });
   }
 
   render() {
-    const randomImageIndex = this.randomIndex(0, this.state.images.length )
-    const randomImage = this.state.images[randomImageIndex];
-    const breed = this.breedNames(Object.keys(this.state.breeds))[0]
-    
-
+  let randomBreed = this.showRandomBreed(this.state.breeds)
 
    return(
         <React.Fragment>
            <h1>Dogs</h1>
-           <h4>{breed}</h4>
-          <FetchImage onSelectBreed={breed} randomImage = {randomImage}/>
-          <FetchingButton onClickHandler={this.handleRequestAPI}/>
+           <h2>Number of Breeds</h2>
+            <h3>{randomBreed}</h3> 
+            {/* <img src={} alt="Dog"></img> */}
+            {/* <h3>{randomImageName}</h3> */}
+           {/* <h4>{breed}</h4> */}
+          <FetchImage randomImage = {randomBreed}/>
+          {/* <FetchingButton onClickHandler={this.handleRequestAPI()}/> */}
         </React.Fragment>
    )
   }
