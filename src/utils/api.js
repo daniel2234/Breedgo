@@ -16,10 +16,11 @@ import Dog from '../models/Dog';
 // }
 
 
-export function fetchRandomDogImages(type='affenpinscher') {
+export function fetchRandomDogImages(type) {
   return fetch(`https://dog.ceo/api/breed/${type}/images`)
     .then(response => response.json())
     .then(data => {
+      console.log(data.message)
       return data.message
   });
 }
@@ -61,12 +62,12 @@ function randomPhoto(min, max) {
 //photos are in order, created a random Int function for grab random photos
 //the max value in the randomInt function will adapt for each image api call.
 
-fetch(`https://dog.ceo/api/breed/dingo/images/random`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data.message, 'images is called here based on breed')
+// fetch(`https://dog.ceo/api/breed/dingo/images/random`)
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(data.message, 'images is called here based on breed')
 
- });
+//  });
 
 
 
