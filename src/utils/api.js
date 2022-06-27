@@ -16,13 +16,13 @@ import Dog from '../models/Dog';
 // }
 
 
-// export function fetchRandomDogImages(type='affenpinscher') {
-//   return fetch(`https://dog.ceo/api/breed/${type}/images`)
-//     .then(response => response.json())
-//     .then(data => {
-//       return data.message
-//   });
-// }
+export function fetchRandomDogImages(type='affenpinscher') {
+  return fetch(`https://dog.ceo/api/breed/${type}/images`)
+    .then(response => response.json())
+    .then(data => {
+      return data.message
+  });
+}
 
 
 

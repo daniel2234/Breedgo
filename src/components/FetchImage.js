@@ -16,32 +16,24 @@ class FetchImage extends React.Component {
     return randomElement;
   }
 
-  //change the value in labrador
+  //pass in value of api for image retrieval.
   componentDidMount() {
-    fetch(`https://dog.ceo/api/breed/wolfhound/images`)
+    fetch(`https://dog.ceo/api/breed/${this.props.randomImage}/images`)
     .then(response => response.json())
     .then(data => {
       this.setState({
-        images: data.message
+        images: this.showRandomBreed(data.message)
       })
-      console.log(data.message, 'images is called here based on breed in componentdidmount')
-
+      console.log(this.showRandomBreed(data.message), 'images is called here based on breed in componentdidmount')
      });
   }
 
   render() {
- 
-    console.log(this.state.images, 'here is the object on line 30');
+    
 
-    const imageLink = this.showRandomBreed(this.state.images)
-
-    console.log(imageLink)
-
-
-    console.log(this.props.randomImage)
     return(
       <div className="image-card">
-          <img src={imageLink} alt="Dog"></img>
+          <img src={this.state.images} alt="Dog"></img>
       </div>
     )
   }
