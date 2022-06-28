@@ -16,13 +16,10 @@ import Dog from '../models/Dog';
 // }
 
 
-export function fetchRandomDogImages(type) {
+export function fetchRandomDogImages(type='labrador') {
   return fetch(`https://dog.ceo/api/breed/${type}/images`)
     .then(response => response.json())
-    .then(data => {
-      console.log(data.message)
-      return data.message
-  });
+    .then(data => { return data.message });
 }
 
 

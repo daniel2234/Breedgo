@@ -1,31 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { fetchRandomDogImages } from "../utils/api";
 // import './FetchImage.css'
 
-class FetchImage extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      images : ''
-    }
+const FetchImage = (props) => {
+  const [images, setImages] = useState({});
+
+  async function fetchData() {
+    const res = await fetch(`https://dog.ceo/api/breed/${props.randomImage}/images`)
+    res.json()
+    .then(res => setImages(res))
   }
 
-  showRandomBreed(breeds) {
-    let randomElement = breeds[Math.floor(Math.random()* Object.keys(breeds).length)]
-    return randomElement;
-  }
+  useEffect(() => {
+    fetchData();
+  })
+
+  function makeArray(obj) {}
 
 
-  render() {
-    
-    console.log('')
-    return(
-      <div className="image-card">
-          <img src={this.state.images} alt="Dog"></img>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <span>{JSON.stringify(images.message)}</span>
+    </div>
+  )
+
+
 }
 
 export default FetchImage

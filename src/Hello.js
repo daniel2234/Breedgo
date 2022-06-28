@@ -48,16 +48,21 @@ class Hello extends React.Component {
     )
   }
 
+
+
   render() {
     let { breeds, isLoaded, error } = this.state
     const showBreed =this.showRandomBreed(breeds)
+
+    console.log(showBreed)
+
 
    return(
         <React.Fragment>
            <h1>Dogs</h1>
            <h2>Number of Breeds</h2>
            <h3>{showBreed}</h3>
-           <h4>Dog length: {typeof fetchBreedImages}</h4>
+           {/* <h4>Dog object {breedImage}</h4> */}
            {/* <button onClick={this.handleClick}>
             {this.state.isToggleOn ? 'ON': 'OFF'}
             </button> */}
@@ -72,7 +77,7 @@ class Hello extends React.Component {
             {/* <img src={} alt="Dog"></img> */}
             {/* <h3>{randomImageName}</h3> */}
            {/* <h4>{breed}</h4> */}
-          {/* <FetchImage randomImage = {randomBreed}/> */}
+          <FetchImage randomImage = {showBreed}/>
           {/* <FetchingButton onClickHandler={this.handleRequestAPI()}/> */}
         </React.Fragment>
    )
