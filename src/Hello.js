@@ -78,7 +78,7 @@ class Hello extends React.Component {
 
 
   render() {
-    let { breeds, randomBreed, breedImages, isLoaded, error } = this.state
+    let { randomBreed, breedImages } = this.state
     // const showBreed = this.showRandomBreed(breeds)
     console.log(this.state.breeds, 'line 64')
     console.log(this.state.breedImages, 'line 78')
