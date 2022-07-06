@@ -4,17 +4,19 @@
   margin: auto;
   text-align: center;
   font-family: arial;
+  border-radius: 10px;
+  height: 100%;
 }
-
 
 .image-doggo {
-  width: 100%;
+  width: 300px;
+  background: url(http://goo.gl/vyAs27) no-repeat scroll 0 0;
 }
 
-.price {
+/* .price {
   color: grey;
   font-size: 22px;
-}
+} */
 
 /* .card button {
   border: none;

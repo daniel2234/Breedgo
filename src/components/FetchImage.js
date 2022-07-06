@@ -9,19 +9,27 @@ const FetchImage = (props) => {
   async function fetchData() {
     const res = await fetch(`https://dog.ceo/api/breed/${props.randomImage}/images`)
     res.json()
-    .then(res => setImages(res))
+    .then(res => setImages(res.message))
   }
 
   useEffect(() => {
     fetchData();
   })
 
-  function makeArray(obj) {}
+  // function get_random (list) {
+  //   return list[Math.floor((Math.random()*list.length))];
+  // }
+  
+  // const objImage = makeArray(images);
+  const message = JSON.stringify(images)
+  // console.log(message)
+  const data = JSON.parse(message)
+
 
 
   return (
     <div>
-      <span>{JSON.stringify(images.message)}</span>
+      <span>{message.map()}</span>
     </div>
   )
 
