@@ -1,8 +1,8 @@
 import React from "react"
 // import { fetchDogBreeds } from './utils/api';
-import {fetchRandomDogImages} from './utils/api';
+// import {fetchRandomDogImages} from './utils/api';
 import FetchingButton from "./FetchingButton";
-import './Hello.css';
+import './Dog.css';
 // import FetchImage from "./components/FetchImage";
 
 class Hello extends React.Component {
@@ -27,7 +27,9 @@ class Hello extends React.Component {
     return randomElement;
   }
 
-
+  extractSubBreedFromImage(imageLink) {
+    return imageLink.split('/')[4].split('-')[1];
+  }
   randomPhoto(images) {
     console.log('images');
     let random = images[Math.random() * images.length>>0];

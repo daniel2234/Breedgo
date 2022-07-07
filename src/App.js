@@ -1,10 +1,10 @@
 import './App.css';
-import Hello from './Hello';
+import Dog from './Dog';
 
 function App() {
   return (
     <div className="App">
-     <Hello/>
+     <Dog/>
     </div>
   );
 }
