@@ -91,15 +91,15 @@ class Hello extends React.Component {
 
   render() {
     let { randomBreed, breedImages } = this.state
-    // const showBreed = this.showRandomBreed(breeds)
-    console.log(this.state.breeds, 'line 64')
-    console.log(this.state.breedImages, 'line 78')
   
    return(
         <React.Fragment>
-          <h1 style={{margin: "10px" }}>BreedGO</h1>
+          <h1>BreedGO</h1>
           <div className="card">
-            <h3>{randomBreed}</h3>
+            <div style={{marginTop: "50px"}}>
+               <h3 style={{marginTop: "50px"}}>{randomBreed.charAt(0).toUpperCase() + randomBreed.slice(1)}</h3>
+            </div>
+
             <img src={breedImages} className="image-doggo" alt="Dog"></img>
             <FetchingButton onClickHandler={this.handleRequestAPI}/>
           </div>
